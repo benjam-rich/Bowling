@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IndexViewModel
+
+<div class="text-center">
+
+    <h1>Bowler League Contacts</h1>
+    <h2>@Model.TeamCategory</h2><br />
+    <!--This page iterates through all of items in the Bowlers table from the database that comes from the IEnumerable in the View Model-->
+    <div>
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th> Name </th>
+                    <th> Address </th>
+                    <th> City </th>
+                    <th> State </th>
+                    <th> Zip </th>
+                    <th> Phone Number </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.Bowlers)
+
+                {
+                    <tr>
+                        <td>@x.BowlerFirstName @x.BowlerMiddleInit @x.BowlerLastName </td>
+                        <td>@x.BowlerAddress</td>
+                        <td>@x.BowlerCity</td>
+                        <td>@x.BowlerState</td>
+                        <td>@x.BowlerZip</td>
+                        <td>@x.BowlerPhoneNumber</td>
+                        <td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+    <div page-info="@Model.PageNumberingInfo" team="@Model.TeamCategory" page-url-team="@Model.TeamCategory"></div>
